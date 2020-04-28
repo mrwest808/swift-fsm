@@ -1,5 +1,6 @@
 //
 //  FSM.swift
+//  v0.1.2
 //
 //
 //  Created by Johan West on 2020-04-28.
