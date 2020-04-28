@@ -15,7 +15,7 @@ public final class StateMachine<State, Event> {
   public var currentState: State
   public var previousState: State
 
-  init(initial: State, _ stateEventMapper: @escaping StateEventMapper) {
+  public init(initial: State, _ stateEventMapper: @escaping StateEventMapper) {
     self.stateEventMapper = stateEventMapper
     currentState = initial
     previousState = initial
