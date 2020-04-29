@@ -25,6 +25,7 @@ enum Event {
   case save
 }
 
+// Declare the initial state and possible state transitions 
 let machine = StateMachine<State, Event>(initial: .idle) { state, event in
   switch (state, event) {
   case (.idle, let .edit(id)):
