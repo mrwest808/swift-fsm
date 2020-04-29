@@ -102,12 +102,15 @@ final class FSMTests: XCTestCase {
     let simpleMachine = SimpleMachine()
     let machine = simpleMachine.machine
     var lastEvent: SimpleMachine.Event?
+    var onCallCount = 0
 
     machine.on { event in
       lastEvent = event
+      onCallCount += 1
     }
 
     XCTAssertEqual(lastEvent, nil)
+    XCTAssertEqual(onCallCount, 0)
     XCTAssertEqual(machine.currentState, SimpleMachine.State.standing)
     machine.send(.stand)
     XCTAssertEqual(lastEvent, nil)
@@ -119,6 +122,7 @@ final class FSMTests: XCTestCase {
     XCTAssertEqual(machine.currentState, SimpleMachine.State.sitting)
     machine.send(.stand)
     XCTAssertEqual(lastEvent, SimpleMachine.Event.stand)
+    XCTAssertEqual(onCallCount, 2)
     XCTAssertEqual(machine.currentState, SimpleMachine.State.standing)
   }
 
