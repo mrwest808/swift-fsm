@@ -48,21 +48,9 @@ struct SimpleMachine {
 }
 
 struct AssociatedValuesMachine {
-  enum State: Equatable {
+  enum State {
     case idle
     case editing(Int)
-
-    // For the sake of equality checking within the test suite
-    static func ==(lhs: State, rhs: State) -> Bool {
-      switch (lhs, rhs) {
-      case (let .editing(lhsInt), let .editing(rhsInt)):
-        return lhsInt == rhsInt
-      case (.idle, .idle):
-        return true
-      default:
-        return lhs == rhs
-      }
-    }
   }
 
   enum Event {
@@ -78,6 +66,20 @@ struct AssociatedValuesMachine {
       return .idle
     default:
       return nil
+    }
+  }
+}
+
+// Needed for equality assertions in tests below
+extension AssociatedValuesMachine.State: Equatable {
+  static func ==(lhs: AssociatedValuesMachine.State, rhs: AssociatedValuesMachine.State) -> Bool {
+    switch (lhs, rhs) {
+    case (let .editing(lhsInt), let .editing(rhsInt)):
+      return lhsInt == rhsInt
+    case (.idle, .idle):
+      return true
+    default:
+      return lhs == rhs
     }
   }
 }
