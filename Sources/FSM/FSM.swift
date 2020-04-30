@@ -55,10 +55,10 @@ public final class ObservableStateMachine<State, Event>: ObservableObject {
 
   private var stateEventMapper: StateEventMapper
 
-  @Published var currentState: State
-  @Published var previousState: State
+  @Published public var currentState: State
+  @Published public var previousState: State
 
-  var eventPublisher = PassthroughSubject<Event, Never>()
+  public var eventPublisher = PassthroughSubject<Event, Never>()
 
   public init(initial: State, _ stateEventMapper: @escaping StateEventMapper) {
     self.stateEventMapper = stateEventMapper
