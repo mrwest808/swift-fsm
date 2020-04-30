@@ -37,8 +37,8 @@ let machine = StateMachine<State, Event>(initial: .idle) { state, event in
   }
 }
 
-machine.on { event in
-  print("\(event): \(machine.previousState) -> \(machine.currentState)")
+machine.onTransition { state, event in
+  print("\(event): \(machine.previousState) -> \(state)")
 }
 
 machine.send(.edit(1))  // prints "edit(1): idle -> editing(1)"
