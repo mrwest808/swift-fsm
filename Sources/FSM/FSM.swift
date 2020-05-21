@@ -90,6 +90,8 @@ open class Unstable_ObservableEventPublisher<Event>: ObservableObject {
 
   public final var eventPublisher = PassthroughSubject<Event, Never>()
 
+  public init() {}
+
   public func send(_ event: Event) {
     receive(event: event)
     eventPublisher.send(event)
