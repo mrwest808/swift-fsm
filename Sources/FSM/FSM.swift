@@ -95,7 +95,7 @@ open class Unstable_ObservableEventPublisher<Event>: ObservableObject {
     eventPublisher.send(event)
   }
 
-  func receive(event: Event) {}
+  open func receive(event: Event) {}
 }
 
 @available(OSX 10.15, *)
@@ -123,7 +123,7 @@ open class Unstable_ObservableStateMachine<State, Event>: Unstable_ObservableEve
     super.send(event)
   }
 
-  func receive(transitionBy event: Event, to: State, from: State) {}
+  open func receive(transitionBy event: Event, to: State, from: State) {}
 }
 
 // =============================================================================
