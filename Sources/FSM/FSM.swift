@@ -77,10 +77,10 @@ public final class ObservableStateMachine<State, Event>: ObservableObject {
 }
 
 @available(OSX 10.15, *)
-public class Unstable_ObservableEventPublisher<Event>: ObservableObject {
-  typealias Unsubscriber = () -> Void
+open class Unstable_ObservableEventPublisher<Event>: ObservableObject {
+  public typealias Unsubscriber = () -> Void
 
-  static func subscribe(to disposables: [AnyCancellable]) -> Unsubscriber {
+  public static func subscribe(to disposables: [AnyCancellable]) -> Unsubscriber {
     return {
       for disposable in disposables {
         disposable.cancel()
@@ -99,7 +99,7 @@ public class Unstable_ObservableEventPublisher<Event>: ObservableObject {
 }
 
 @available(OSX 10.15, *)
-public class Unstable_ObservableStateMachine<State, Event>: Unstable_ObservableEventPublisher<Event> {
+open class Unstable_ObservableStateMachine<State, Event>: Unstable_ObservableEventPublisher<Event> {
   public typealias StateEventMapper = (State, Event) -> State?
 
   private var stateEventMapper: StateEventMapper
