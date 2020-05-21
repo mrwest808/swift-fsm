@@ -100,7 +100,7 @@ open class Unstable_ObservableEventPublisher<Event>: ObservableObject {
 
 @available(OSX 10.15, *)
 open class Unstable_ObservableStateMachine<State, Event>: Unstable_ObservableEventPublisher<Event> {
-  typealias StateEventMapper = (State, Event) -> State?
+  public typealias StateEventMapper = (State, Event) -> State?
 
   private var stateEventMapper: StateEventMapper
 
